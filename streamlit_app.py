@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-
+import plotly.express as px
 
 # File Uploader
 st.title('Anxiety and Depression Analysis App')
@@ -26,14 +25,13 @@ if uploaded_file is not None:
 
     # Sidebar input for search term
     search_term = st.sidebar.text_input('Enter search term')
-    #Display the search results
+    # Display the search results
     search_results = df[df[selected_column].str.contains(search_term, case=False)]
     st.write(search_results)
 
     # Display a bar plot of the selected column
     st.write('Bar plot of the selected column:')
-    st.countplot(x=selected_column, data=df)
-    plt.xticks(rotation=45)
-    st.pyplot()
+    fig = px.histogram(df, x=selected_column)
+    st.plotly_chart(fig)
 else:
     st.write('Please upload a CSV file to proceed.')
