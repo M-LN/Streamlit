@@ -36,9 +36,9 @@ if uploaded_file is not None:
 
     #display a scatter plot from search results
     st.write('Scatter plot of the search results:')
-    fig = px.scatter(search_results, x='anxiety', y='depression')
+    fig = px.scatter(search_results, x= selected_column, y=selected_column in df.columns)
     st.plotly_chart(fig)
     
-    
+
 else:
     st.write('Please upload a CSV file to proceed.')
