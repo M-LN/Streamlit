@@ -32,7 +32,7 @@ if uploaded_file is not None:
 
     # Display a bar plot of the selected column
     st.write('Bar plot of the selected column:')
-    sns.countplot(x=selected_column, data=df)
+    st.countplot(x=selected_column, data=df)
     plt.xticks(rotation=45)
     st.pyplot()
 else:
