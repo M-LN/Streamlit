@@ -36,7 +36,7 @@ if uploaded_file is not None:
 
     #display a scatter plot from search results
     st.write('Scatter plot of the search results:')
-    fig = px.scatter(search_results, x=selected_column in df, y=selected_column)
+    fig = px.scatter(search_results, x=selected_column, y='Value')
     st.plotly_chart(fig)
     
 
