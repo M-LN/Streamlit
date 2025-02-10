@@ -33,5 +33,12 @@ if uploaded_file is not None:
     st.write('Bar plot of the selected column:')
     fig = px.histogram(df, x=selected_column)
     st.plotly_chart(fig)
+
+    #display a scatter plot from search results
+    st.write('Scatter plot of the search results:')
+    fig = px.scatter(search_results, x='anxiety', y='depression')
+    st.plotly_chart(fig)
+    
+    
 else:
     st.write('Please upload a CSV file to proceed.')
