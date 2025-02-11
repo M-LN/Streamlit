@@ -25,20 +25,27 @@ if uploaded_file is not None:
 
     # Sidebar input for search term
     search_term = st.sidebar.text_input('Enter search term')
+
     # Display the search results
-    search_results = df[df[selected_column].str.contains(search_term, case=False)]
-    st.write(search_results)
+    if pd.api.types.is_string_dtype(df[selected_column]):
+        search_results = df[df[selected_column].str.contains(search_term, case=False, na=False)]
+        st.write("Search results:")
+        st.write(search_results)
+    else:
+        st.write(f"The selected column '{selected_column}' is not a string column and cannot be searched.")
 
     # Display a bar plot of the selected column
     st.write('Bar plot of the selected column:')
     fig = px.histogram(df, x=selected_column)
     st.plotly_chart(fig)
 
-    #display a scatter plot from search results
-    st.write('Scatter plot of the search results:')
-    fig = px.scatter(search_results, x=selected_column, y='Value')
-    st.plotly_chart(fig)
-    
+    # Display a scatter plot from search results if 'Value' column exists
+    if 'Value' in search_results.columns:
+        st.write('Scatter plot of the search results:')
+        fig = px.scatter(search_results, x=selected_column, y='Value')
+        st.plotly_chart(fig)
+    else:
+        st.write("The 'Value' column does not exist in the search results, so a scatter plot cannot be created.")
 
 else:
     st.write('Please upload a CSV file to proceed.')
