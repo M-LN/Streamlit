@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 # File Uploader
 st.title('Anxiety and Depression Analysis App')
@@ -15,6 +17,10 @@ if uploaded_file is not None:
     # Display first few rows of the dataset
     st.write("Here are the first few rows of your dataset:")
     st.write(df.head())
+
+    # Display the entire dataset in a table
+    st.write("Here is the entire dataset:")
+    st.dataframe(df)
 
     # Display basic statistics of the dataset
     st.write("Basic statistics of your dataset:")
@@ -46,6 +52,19 @@ if uploaded_file is not None:
         st.plotly_chart(fig)
     else:
         st.write("The 'Value' column does not exist in the search results, so a scatter plot cannot be created.")
+
+    # Display a correlation heatmap
+    st.write('Correlation heatmap:')
+    numeric_df = df.select_dtypes(include=['float64', 'int64'])
+    corr = numeric_df.corr()
+    fig, ax = plt.subplots()
+    sns.heatmap(corr, annot=True, ax=ax)
+    st.pyplot(fig)
+
+    # Display a pair plot for numerical columns
+    st.write('Pair plot of numerical columns:')
+    fig = sns.pairplot(numeric_df)
+    st.pyplot(fig)
 
 else:
     st.write('Please upload a CSV file to proceed.')
