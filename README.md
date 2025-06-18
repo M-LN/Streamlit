@@ -177,19 +177,3 @@ For support:
 Created with ❤️ for mental health analysis
 ```
 
-This `README.md` file provides comprehensive documentation for your project. To use it:
-
-1. Save it as `README.md` in your project's root directory
-2. Update the placeholder content (repository URL, contact information, etc.)
-3. Add any specific instructions or requirements for your implementation
-
-The Markdown format will render nicely on GitHub or any other platform that supports Markdown.
-This `README.md` file provides comprehensive documentation for your project. To use it:
-
-1. Save it as `README.md` in your project's root directory
-2. Update the placeholder content (repository URL, contact information, etc.)
-3. Add any specific instructions or requirements for your implementation
-
-The Markdown format will render nicely on GitHub or any other platform that supports Markdown.
-
-Similar code found with 3 license types
